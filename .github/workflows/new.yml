@@ -22,10 +22,10 @@ jobs:
         dotnet-version: '5.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore ./PracticeRepo/webapp1.sln
+      run: dotnet restore ./webapp1.sln
 
     - name: Build
-      run: dotnet build ./PracticeRepo/webapp1.sln --configuration Release
+      run: dotnet build ./webapp1.sln --configuration Release
 
   test:
     needs: build
@@ -41,7 +41,7 @@ jobs:
         dotnet-version: '5.0.x'
 
     - name: Test
-      run: dotnet test ./PracticeRepo/webapp1.sln --configuration Release --collect:"XPlat Code Coverage"
+      run: dotnet test ./webapp1.sln --configuration Release --collect:"XPlat Code Coverage"
 
   deploy:
     needs: test
@@ -57,7 +57,7 @@ jobs:
         dotnet-version: '5.0.x'
 
     - name: Publish
-      run: dotnet publish ./PracticeRepo/webapp1.sln --configuration Release --output ./publish
+      run: dotnet publish ./webapp1.sln --configuration Release --output ./publish
 
     - name: Deploy to Staging
       run: |
