@@ -16,12 +16,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '5.0.x'
+
     - name: Restore NuGet packages
-      run: nuget restore ./webapp1.sln
+      run: dotnet restore ./webapp1.sln
 
     - name: Build
-      run: |
-        Start-Process -FilePath "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe" -ArgumentList ".\\webapp1.sln /p:Configuration=Release" -Wait
+      run: dotnet build ./webapp1.sln --configuration Release
 
   test:
     needs: build
@@ -30,6 +34,11 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '5.0.x'
 
     - name: Test
       run: dotnet test ./webapp1.sln --configuration Release --collect:"XPlat Code Coverage"
@@ -41,6 +50,11 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '5.0.x'
 
     - name: Publish
       run: dotnet publish ./webapp1.sln --configuration Release --output ./publish
