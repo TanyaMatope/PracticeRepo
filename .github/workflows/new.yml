@@ -25,7 +25,7 @@ jobs:
       run: dotnet restore webapp1.sln
 
     - name: Build
-      run: dotnet build path/to/your/webapp1.sln --configuration Release
+      run: dotnet build C:\Users\TANYA\Source\Repos\PracticeRepo\webapp1.sln --configuration Release
 
   test:
     needs: build
@@ -41,7 +41,7 @@ jobs:
         dotnet-version: '5.0.x'
 
     - name: Test
-      run: dotnet test path/to/your/webapp1.sln --configuration Release --collect:"XPlat Code Coverage"
+      run: dotnet test  C:\Users\TANYA\Source\Repos\PracticeRepo\webapp1.sln--configuration Release --collect:"XPlat Code Coverage"
 
   deploy:
     needs: test
@@ -57,7 +57,7 @@ jobs:
         dotnet-version: '5.0.x'
 
     - name: Publish
-      run: dotnet publish path/to/your/webapp1.sln --configuration Release --output ./publish
+      run: dotnet publish C:\Users\TANYA\Source\Repos\PracticeRepo\webapp1.sln --configuration Release --output ./publish
 
     - name: Deploy to Staging
       run: |
