@@ -16,11 +16,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: '5.0.x'
-
     - name: Restore NuGet packages
       run: dotnet restore ./webapp1.sln
 
@@ -35,11 +30,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: '5.0.x'
-
     - name: Test
       run: dotnet test ./webapp1.sln --configuration Release --collect:"XPlat Code Coverage"
 
@@ -50,11 +40,6 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: '5.0.x'
 
     - name: Publish
       run: dotnet publish ./webapp1.sln --configuration Release --output ./publish
